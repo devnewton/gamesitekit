@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>${(game.name)!}</title>
+    <title>${(manifest.game.name)!}</title>
 </head>
 <body>
 
@@ -15,6 +15,7 @@
 </div>
 
 <div id="presentation">
+    <#include "presentation.ftl" >
 </div>
 
 <div id="buy">
@@ -22,7 +23,7 @@
 
 <div id="downloads">
     <ul>
-    <#list game.downloads as download >
+    <#list manifest.game.download as download >
         <li><a href="${download.url}">${download.platform}</a></li>
     </#list>
     </ul>
@@ -33,8 +34,9 @@
 
 <div id="factsheet">
     <ul>
-        <#if game.genre??><li>Genre: ${game.genre}</li></#if>
-        <#if game.licenses??><li>License<#if game.licenses?size &gt; 0 >s</#if>: <#list game.licenses as license >${license}<#if license_has_next>, </#if></#list></li></#if>
+        <li>Genre: ${manifest.game.genre}</li>
+        <li>License: ${manifest.game.license}</li>
+        <li>Platforms: ${manifest.game.platforms}</li>
     </ul>
 </div>
 
