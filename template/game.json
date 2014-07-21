@@ -1,0 +1,31 @@
+{
+  "name": "Newton Adventure",
+  "genre": "platformer",
+  "licenses": ["BSD", "CC-BY-SA"],
+  "downloads": [
+      {
+          "platform":"Windows XP / Vista / 7",
+          "url": "http://dl.bci.im/games/newton_adventure/newton-adventure-installer-1.15.exe"
+      },
+      {
+          "platform":"Debian stable, Ubuntu 12.04 LTS",
+          "url": "http://dl.bci.im/games/newton_adventure/newton-adventure_1.15.deb"
+      },
+      {
+          "platform":"Red Hat, Fedora, Suse 32 bits",
+          "url": "http://dl.bci.im/games/newton_adventure/newton-adventure-1.15-1.i686.rpm"
+      },
+      {
+          "platform":"Red Hat, Fedora, Suse 64 bits",
+          "url": "http://dl.bci.im/games/newton_adventure/newton-adventure-1.15-1.x86_64.rpm"
+      },
+      {
+          "platform":"Android",
+          "url": "http://dl.bci.im/games/newton_adventure/newton-adventure-1.15.apk"
+      },
+      {
+          "platform":"Linux,  MacosX and other OS",
+          "url": "http://dl.bci.im/games/newton_adventure/newton-adventure-installer-1.15.jar"
+      }
+  ]
+}
