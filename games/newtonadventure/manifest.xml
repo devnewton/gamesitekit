@@ -3,6 +3,7 @@
     <genre>platformer</genre>
     <license>BSD, CC-BY-SA</license>
     <name>Newton Adventure</name>
+    <catchphrase>2d rotating platformer for Windows, Mac &amp; Linux</catchphrase>
     <platforms>Android, Linux, MacosX, Windows</platforms>
     <download>
         <platform>Windows XP / Vista / 7</platform>

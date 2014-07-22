@@ -1,0 +1,22 @@
+#content {
+    display: flex;
+    flex-flow: row;
+}
+
+#content-main {
+    flex: 2;
+}
+
+#content-aside {
+    flex: 1;
+}
+
+video {
+    max-width: 100% !important;
+}
+
+@media only screen and (max-width: 480px) {
+    #content { 
+        flex-flow: column
+    }
+}

@@ -43,7 +43,6 @@ import java.util.HashMap;
 import java.util.List;
 import javax.xml.parsers.ParserConfigurationException;
 import org.apache.commons.io.FileUtils;
-import org.apache.commons.io.FilenameUtils;
 import org.kohsuke.args4j.CmdLineException;
 import org.kohsuke.args4j.CmdLineParser;
 import org.kohsuke.args4j.Option;
@@ -72,8 +71,8 @@ public class GameSiteKitMain {
     private Path screenshotsOutputDir;
     private Path downloadsInputDir;
     private Path downloadsOutputDir;
-    private Path mediaInputDir;
-    private Path mediaOutputDir;
+    private Path styleInputDir;
+    private Path styleOutputDir;
 
     public static final String IMAGE_GLOB = "*.{jpg,jpeg,png,JPEG,JPG,PNG}";
 
@@ -100,8 +99,8 @@ public class GameSiteKitMain {
             screenshotThumbnailsOutputDir = screenshotsOutputDir.resolve("thumbnails");
             screenshotsInputDir = inputDir.resolve("screenshots");
             screenshotThumbnailsInputDir = screenshotsInputDir.resolve("thumbnails");
-            mediaInputDir = templateDir.resolve("media");
-            mediaOutputDir = outputDir.resolve("media");
+            styleInputDir = templateDir.resolve("style");
+            styleOutputDir = outputDir.resolve("style");
         } catch (CmdLineException e) {
             System.err.println(e.getMessage());
             System.err.println("gamesitekit [options...] arguments...");
@@ -133,6 +132,7 @@ public class GameSiteKitMain {
         FileUtils.deleteDirectory(outputDir.toFile());
         Files.createDirectories(outputDir);
         copyMedias();
+        copyStyle();
         copyScreenshots();
         copyDownloads();
         buildHtml();
@@ -202,7 +202,13 @@ public class GameSiteKitMain {
     }
 
     private void copyMedias() throws IOException {
-        FileUtils.copyDirectory(mediaInputDir.toFile(), mediaOutputDir.toFile());
+        Path mediaOutputDir = outputDir.resolve("media");
+        FileUtils.copyDirectory(templateDir.resolve("media").toFile(), mediaOutputDir.toFile());
+        FileUtils.copyDirectory(inputDir.resolve("media").toFile(), mediaOutputDir.toFile());
+    }
+
+    private void copyStyle() throws IOException {
+        FileUtils.copyDirectory(styleInputDir.toFile(), styleOutputDir.toFile());
     }
 
 }
