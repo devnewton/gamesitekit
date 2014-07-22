@@ -34,11 +34,16 @@ import freemarker.template.Version;
 import java.io.BufferedWriter;
 import java.io.IOException;
 import java.nio.charset.Charset;
+import java.nio.file.DirectoryStream;
 import java.nio.file.FileSystems;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import javax.xml.parsers.ParserConfigurationException;
+import org.apache.commons.io.FileUtils;
+import org.apache.commons.io.FilenameUtils;
 import org.kohsuke.args4j.CmdLineException;
 import org.kohsuke.args4j.CmdLineParser;
 import org.kohsuke.args4j.Option;
@@ -61,12 +66,22 @@ public class GameSiteKitMain {
     private Path outputDir;
 
     private Configuration freemakerConfiguration;
+    private Path screenshotsInputDir;
+    private Path screenshotThumbnailsInputDir;
+    private Path screenshotThumbnailsOutputDir;
+    private Path screenshotsOutputDir;
+    private Path downloadsInputDir;
+    private Path downloadsOutputDir;
+    private Path mediaInputDir;
+    private Path mediaOutputDir;
+
+    public static final String IMAGE_GLOB = "*.{jpg,jpeg,png,JPEG,JPG,PNG}";
 
     public GameSiteKitMain() {
 
     }
 
-    public void init(String[] args) throws IOException {
+    public boolean init(String[] args) throws IOException {
         CmdLineParser parser = new CmdLineParser(this);
         try {
             parser.parseArgument(args);
@@ -79,19 +94,30 @@ public class GameSiteKitMain {
             if (null == outputDir) {
                 outputDir = FileSystems.getDefault().getPath("target/site");
             }
+            downloadsInputDir = inputDir.resolve("downloads");
+            downloadsOutputDir = outputDir.resolve("downloads");
+            screenshotsOutputDir = outputDir.resolve("screenshots");
+            screenshotThumbnailsOutputDir = screenshotsOutputDir.resolve("thumbnails");
+            screenshotsInputDir = inputDir.resolve("screenshots");
+            screenshotThumbnailsInputDir = screenshotsInputDir.resolve("thumbnails");
+            mediaInputDir = templateDir.resolve("media");
+            mediaOutputDir = outputDir.resolve("media");
         } catch (CmdLineException e) {
             System.err.println(e.getMessage());
             System.err.println("gamesitekit [options...] arguments...");
             parser.printUsage(System.err);
             System.err.println(" Example: gamesitekit " + parser.printExample(OptionHandlerFilter.ALL));
+            return false;
         }
         initFreemarker();
+        return true;
     }
 
     public static void main(String[] args) throws IOException, TemplateException, SAXException, ParserConfigurationException {
         GameSiteKitMain main = new GameSiteKitMain();
-        main.init(args);
-        main.build();
+        if (main.init(args)) {
+            main.build();
+        }
     }
 
     private void initFreemarker() throws IOException {
@@ -104,12 +130,79 @@ public class GameSiteKitMain {
     }
 
     private void build() throws IOException, TemplateException, SAXException, ParserConfigurationException {
+        FileUtils.deleteDirectory(outputDir.toFile());
+        Files.createDirectories(outputDir);
+        copyMedias();
+        copyScreenshots();
+        copyDownloads();
+        buildHtml();
+    }
+
+    private void copyScreenshots() throws IOException {
+        Files.createDirectories(screenshotsOutputDir);
+        try (DirectoryStream<Path> stream = Files.newDirectoryStream(screenshotsInputDir, IMAGE_GLOB)) {
+            for (Path image : stream) {
+                Files.copy(image, screenshotsOutputDir.resolve(screenshotsInputDir.relativize(image)));
+            }
+        }
+        Files.createDirectories(screenshotThumbnailsOutputDir);
+        try (DirectoryStream<Path> stream = Files.newDirectoryStream(screenshotThumbnailsInputDir, IMAGE_GLOB)) {
+            for (Path image : stream) {
+                Files.copy(image, screenshotThumbnailsOutputDir.resolve(screenshotThumbnailsInputDir.relativize(image)));
+            }
+        }
+    }
+
+    private void buildHtml() throws SAXException, IOException, TemplateException, ParserConfigurationException {
         HashMap<String, Object> model = new HashMap<>();
         model.put("manifest", freemarker.ext.dom.NodeModel.parse(inputDir.resolve("manifest.xml").toFile()));
-        Files.createDirectories(outputDir);
+        model.put("screenshots", createScreenshotsMV());
+        model.put("downloads", createDownloadsMV());
         try (BufferedWriter w = Files.newBufferedWriter(outputDir.resolve("index.html"), Charset.forName("UTF-8"))) {
             freemakerConfiguration.getTemplate("index.ftl").process(model, w);
         }
+    }
+
+    private List<ScreenshotMV> createScreenshotsMV() throws IOException {
+        List<ScreenshotMV> screenshots = new ArrayList<>();
+        try (DirectoryStream<Path> stream = Files.newDirectoryStream(screenshotThumbnailsOutputDir, IMAGE_GLOB)) {
+            for (Path thumbnail : stream) {
+                Path screenshot = screenshotsOutputDir.resolve(thumbnail.getFileName());
+                if (Files.exists(screenshot)) {
+                    ScreenshotMV mv = new ScreenshotMV();
+                    mv.setFull(outputDir.relativize(screenshot).toString());
+                    mv.setThumbnail(outputDir.relativize(thumbnail).toString());
+                    screenshots.add(mv);
+                }
+            }
+        }
+        return screenshots;
+    }
+
+    private void copyDownloads() throws IOException {
+        Files.createDirectories(downloadsOutputDir);
+        try (DirectoryStream<Path> stream = Files.newDirectoryStream(downloadsInputDir)) {
+            for (Path image : stream) {
+                Files.copy(image, downloadsOutputDir.resolve(downloadsInputDir.relativize(image)));
+            }
+        }
+    }
+
+    private List<DownloadsMV> createDownloadsMV() throws IOException {
+        List<DownloadsMV> downloads = new ArrayList<>();
+        try (DirectoryStream<Path> stream = Files.newDirectoryStream(downloadsOutputDir)) {
+            for (Path download : stream) {
+                DownloadsMV mv = new DownloadsMV();
+                mv.setUrl(downloadsOutputDir.relativize(download).toString());
+                mv.setFileName(download.getFileName().toString());
+                downloads.add(mv);
+            }
+        }
+        return downloads;
+    }
+
+    private void copyMedias() throws IOException {
+        FileUtils.copyDirectory(mediaInputDir.toFile(), mediaOutputDir.toFile());
     }
 
 }

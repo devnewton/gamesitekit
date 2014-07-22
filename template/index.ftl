@@ -22,25 +22,18 @@
 </div>
 
 <div id="downloads">
-    <ul>
-    <#list manifest.game.download as download >
-        <li><a href="${download.url}">${download.platform}</a></li>
-    </#list>
-    </ul>
+    <#include "downloads.ftl" >
 </div>
 
 <div id="cover">
 </div>
 
 <div id="factsheet">
-    <ul>
-        <li>Genre: ${manifest.game.genre}</li>
-        <li>License: ${manifest.game.license}</li>
-        <li>Platforms: ${manifest.game.platforms}</li>
-    </ul>
+    <#include "factsheet.ftl" >
 </div>
 
 <div id="screenshots">
+    <#include "screenshots.ftl" >
 </div>
 
 <div id="features">
