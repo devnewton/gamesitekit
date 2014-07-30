@@ -84,6 +84,8 @@ public class GameSiteKitMain {
     private Path downloadsOutputDir;
     private Path styleInputDir;
     private Path styleOutputDir;
+    private Path scriptsInputDir;
+    private Path scriptsOutputDir;
 
     public static final String IMAGE_GLOB = "*.{jpg,jpeg,png,JPEG,JPG,PNG}";
 
@@ -111,6 +113,8 @@ public class GameSiteKitMain {
             screenshotThumbnailsInputDir = screenshotsInputDir.resolve("thumbnails");
             styleInputDir = templateDir.resolve("style");
             styleOutputDir = outputDir.resolve("style");
+            scriptsInputDir = templateDir.resolve("scripts");
+            scriptsOutputDir = outputDir.resolve("scripts");
         } catch (CmdLineException e) {
             System.err.println(e.getMessage());
             System.err.println("gamesitekit [options...] arguments...");
@@ -144,6 +148,7 @@ public class GameSiteKitMain {
         Files.createDirectories(outputDir);
         copyMedias();
         copyStyle();
+        copyScripts();
         copyScreenshots();
         copyDownloads();
         buildHtml();
@@ -247,6 +252,9 @@ public class GameSiteKitMain {
 
     private void copyStyle() throws IOException {
         FileUtils.copyDirectory(styleInputDir.toFile(), styleOutputDir.toFile());
+    }
+    private void copyScripts() throws IOException {
+        FileUtils.copyDirectory(scriptsInputDir.toFile(), scriptsOutputDir.toFile());
     }
 
 }

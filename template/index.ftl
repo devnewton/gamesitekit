@@ -4,6 +4,14 @@
     <meta charset="utf-8"/> 
     <title>${(manifest.game.name)!}</title>
     <link rel="stylesheet" href="style/style.css">
+    <link rel="stylesheet" href="style/gallerie.css"/>
+    <script src="scripts/jquery-2.1.1.js"></script>
+    <script src="scripts/jquery.gallerie.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function(){
+        $('#screenshot-thumbnails').gallerie();
+    });
+    </script>
 </head>
 <body>
 
