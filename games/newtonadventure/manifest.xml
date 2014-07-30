@@ -5,28 +5,7 @@
     <name>Newton Adventure</name>
     <catchphrase>2d rotating platformer for Windows, Mac &amp; Linux</catchphrase>
     <platforms>Android, Linux, MacosX, Windows</platforms>
-    <download>
-        <platform>Windows XP / Vista / 7</platform>
-        <url>http://dl.bci.im/games/newton_adventure/newton-adventure-installer-1.15.exe</url>
-    </download>
-    <download>
-        <platform>Debian stable, Ubuntu 12.04 LTS</platform>
-        <url>http://dl.bci.im/games/newton_adventure/newton-adventure_1.15.deb</url>
-    </download>
-    <download>
-        <platform>Red Hat, Fedora, Suse 32 bits</platform>
-        <url>http://dl.bci.im/games/newton_adventure/newton-adventure-1.15-1.i686.rpm</url>
-    </download>
-    <download>
-        <platform>Red Hat, Fedora, Suse 64 bits</platform>
-        <url>http://dl.bci.im/games/newton_adventure/newton-adventure-1.15-1.x86_64.rpm</url>
-    </download>
-    <download>
-        <platform>Android</platform>
-        <url>http://dl.bci.im/games/newton_adventure/newton-adventure-1.15.apk</url>
-    </download>
-    <download>
-        <platform>Linux,  MacosX and other OS</platform>
-        <url>http://dl.bci.im/games/newton_adventure/newton-adventure-installer-1.15.jar</url>
-    </download>
+    <feature>Nice 16 bits styled colorful graphism.</feature>
+    <feature>Gamepad support.</feature>
+    <feature>Level editor, full source code and data available under free license.</feature>
 </game>

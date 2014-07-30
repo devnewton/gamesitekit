@@ -39,8 +39,12 @@ import java.nio.file.FileSystems;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 import javax.xml.parsers.ParserConfigurationException;
 import org.apache.commons.io.FileUtils;
 import org.kohsuke.args4j.CmdLineException;
@@ -64,6 +68,13 @@ public class GameSiteKitMain {
     @Option(name = "-o")
     private Path outputDir;
 
+    private Locale locale = Locale.FRENCH;
+
+    @Option(name = "-l")
+    public void setLocale(String language) {
+        this.locale = new Locale(language);
+    }
+
     private Configuration freemakerConfiguration;
     private Path screenshotsInputDir;
     private Path screenshotThumbnailsInputDir;
@@ -77,7 +88,6 @@ public class GameSiteKitMain {
     public static final String IMAGE_GLOB = "*.{jpg,jpeg,png,JPEG,JPG,PNG}";
 
     public GameSiteKitMain() {
-
     }
 
     public boolean init(String[] args) throws IOException {
@@ -126,6 +136,7 @@ public class GameSiteKitMain {
         freemakerConfiguration.setDefaultEncoding("UTF-8");
         freemakerConfiguration.setTemplateExceptionHandler(TemplateExceptionHandler.DEBUG_HANDLER);
         freemakerConfiguration.setIncompatibleImprovements(new Version(2, 3, 20));
+        freemakerConfiguration.setLocale(locale);
     }
 
     private void build() throws IOException, TemplateException, SAXException, ParserConfigurationException {
@@ -155,11 +166,20 @@ public class GameSiteKitMain {
 
     private void buildHtml() throws SAXException, IOException, TemplateException, ParserConfigurationException {
         HashMap<String, Object> model = new HashMap<>();
-        model.put("manifest", freemarker.ext.dom.NodeModel.parse(inputDir.resolve("manifest.xml").toFile()));
+        model.put("manifest", freemarker.ext.dom.NodeModel.parse(resolveManifest().toFile()));
         model.put("screenshots", createScreenshotsMV());
         model.put("downloads", createDownloadsMV());
         try (BufferedWriter w = Files.newBufferedWriter(outputDir.resolve("index.html"), Charset.forName("UTF-8"))) {
             freemakerConfiguration.getTemplate("index.ftl").process(model, w);
+        }
+    }
+
+    private Path resolveManifest() {
+        Path manifest = inputDir.resolve("manifest_" + locale.getLanguage() + ".xml");
+        if (Files.exists(manifest)) {
+            return manifest;
+        } else {
+            return inputDir.resolve("manifest.xml");
         }
     }
 
@@ -176,6 +196,14 @@ public class GameSiteKitMain {
                 }
             }
         }
+        Collections.sort(screenshots, new Comparator<ScreenshotMV>() {
+
+            @Override
+            public int compare(ScreenshotMV o1, ScreenshotMV o2) {
+                return o1.getFull().compareTo(o2.getFull());
+            }
+
+        });
         return screenshots;
     }
 
@@ -198,6 +226,16 @@ public class GameSiteKitMain {
                 downloads.add(mv);
             }
         }
+        Collections.sort(downloads, new Comparator<DownloadsMV>() {
+
+            @Override
+            public int compare(DownloadsMV o1, DownloadsMV o2) {
+                String ext1 = o1.getFileName().substring(o1.getFileName().indexOf("."));
+                String ext2 = o2.getFileName().substring(o2.getFileName().indexOf("."));
+                return ext2.compareTo(ext1);
+            }
+
+        });
         return downloads;
     }
 

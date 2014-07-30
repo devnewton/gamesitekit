@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta charset="utf-8"/> 
     <title>${(manifest.game.name)!}</title>
     <link rel="stylesheet" href="style/style.css">
 </head>
@@ -11,8 +12,8 @@
 </nav>
 
 <header id="header">
-    <div id="title">${(manifest.game.name)!}</div>
-    <div id="catchphrase">${(manifest.game.catchphrase)!}</div>
+    <h1 id="title">${(manifest.game.name)!}</h1>
+    <em id="catchphrase">${(manifest.game.catchphrase)!}</em>
 </header>
 
 <div id="content">
@@ -40,6 +41,7 @@
             <#include "screenshots.ftl" >
         </section>
         <section id="features">
+            <#include "features.ftl" >
         </section>
     </aside>
 </div>
