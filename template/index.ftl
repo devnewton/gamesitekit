@@ -30,6 +30,9 @@
         <section id="downloads">
             <#include "downloads.ftl" >
         </section>
+        <section id="links">
+            <#include "links.ftl" >
+        </section>
     </main>
     <aside id="content-aside">
         <section id="cover">
