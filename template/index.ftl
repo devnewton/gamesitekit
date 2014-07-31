@@ -3,13 +3,13 @@
 <head>
     <meta charset="utf-8"/> 
     <title>${(manifest.game.name)!}</title>
-    <link rel="stylesheet" href="style/style.css">
-    <link rel="stylesheet" href="style/colorbox.css">
+    <link rel="stylesheet" href="../style/style.css">
+    <link rel="stylesheet" href="../style/colorbox.css">
 </head>
 <body>
 
 <nav id="menu">
-    <a href="index.html">Home</a>
+    <#include "menu.ftl" >
 </nav>
 
 <header id="header">
@@ -33,7 +33,7 @@
     </main>
     <aside id="content-aside">
         <section id="cover">
-            <img src="media/cover.png">
+            <img src="../media/cover.png">
         </section>
         <section id="factsheet">
             <#include "factsheet.ftl" >
@@ -47,8 +47,8 @@
     </aside>
 </div>
 
-    <script src="scripts/jquery-2.1.1.js"></script>
-    <script src="scripts/jquery.colorbox.js"></script>
+    <script src="../scripts/jquery-2.1.1.js"></script>
+    <script src="../scripts/jquery.colorbox.js"></script>
     <script type="text/javascript">
     $(document).ready(function(){
         $('#screenshot-thumbnails > a').colorbox({

@@ -68,12 +68,7 @@ public class GameSiteKitMain {
     @Option(name = "-o")
     private Path outputDir;
 
-    private Locale locale = Locale.FRENCH;
-
-    @Option(name = "-l")
-    public void setLocale(String language) {
-        this.locale = new Locale(language);
-    }
+    private static final List<Locale> locales = Arrays.asList(Locale.FRENCH, Locale.ENGLISH);
 
     private Configuration freemakerConfiguration;
     private Path screenshotsInputDir;
@@ -129,7 +124,11 @@ public class GameSiteKitMain {
     public static void main(String[] args) throws IOException, TemplateException, SAXException, ParserConfigurationException {
         GameSiteKitMain main = new GameSiteKitMain();
         if (main.init(args)) {
-            main.build();
+            main.cleanUp();
+            main.buildResources();
+            for (Locale locale : locales) {
+                main.buildHtml(locale);
+            }
         }
     }
 
@@ -140,18 +139,15 @@ public class GameSiteKitMain {
         freemakerConfiguration.setDefaultEncoding("UTF-8");
         freemakerConfiguration.setTemplateExceptionHandler(TemplateExceptionHandler.DEBUG_HANDLER);
         freemakerConfiguration.setIncompatibleImprovements(new Version(2, 3, 20));
-        freemakerConfiguration.setLocale(locale);
     }
 
-    private void build() throws IOException, TemplateException, SAXException, ParserConfigurationException {
-        FileUtils.deleteDirectory(outputDir.toFile());
-        Files.createDirectories(outputDir);
+    private void buildResources() throws IOException {
+        copyPhp();
         copyMedias();
         copyStyle();
         copyScripts();
         copyScreenshots();
         copyDownloads();
-        buildHtml();
     }
 
     private void copyScreenshots() throws IOException {
@@ -169,17 +165,20 @@ public class GameSiteKitMain {
         }
     }
 
-    private void buildHtml() throws SAXException, IOException, TemplateException, ParserConfigurationException {
+    private void buildHtml(Locale locale) throws SAXException, IOException, TemplateException, ParserConfigurationException {
+        Path localeOutputDir = outputDir.resolve(locale.getLanguage());
+        Files.createDirectories(localeOutputDir);
         HashMap<String, Object> model = new HashMap<>();
-        model.put("manifest", freemarker.ext.dom.NodeModel.parse(resolveManifest().toFile()));
-        model.put("screenshots", createScreenshotsMV());
-        model.put("downloads", createDownloadsMV());
-        try (BufferedWriter w = Files.newBufferedWriter(outputDir.resolve("index.html"), Charset.forName("UTF-8"))) {
+        model.put("manifest", freemarker.ext.dom.NodeModel.parse(resolveManifest(locale).toFile()));
+        model.put("screenshots", createScreenshotsMV(localeOutputDir));
+        model.put("downloads", createDownloadsMV(localeOutputDir));
+        freemakerConfiguration.setLocale(locale);
+        try (BufferedWriter w = Files.newBufferedWriter(localeOutputDir.resolve("index.html"), Charset.forName("UTF-8"))) {
             freemakerConfiguration.getTemplate("index.ftl").process(model, w);
         }
     }
 
-    private Path resolveManifest() {
+    private Path resolveManifest(Locale locale) {
         Path manifest = inputDir.resolve("manifest_" + locale.getLanguage() + ".xml");
         if (Files.exists(manifest)) {
             return manifest;
@@ -188,15 +187,15 @@ public class GameSiteKitMain {
         }
     }
 
-    private List<ScreenshotMV> createScreenshotsMV() throws IOException {
+    private List<ScreenshotMV> createScreenshotsMV(Path localeOutputDir) throws IOException {
         List<ScreenshotMV> screenshots = new ArrayList<>();
         try (DirectoryStream<Path> stream = Files.newDirectoryStream(screenshotThumbnailsOutputDir, IMAGE_GLOB)) {
             for (Path thumbnail : stream) {
                 Path screenshot = screenshotsOutputDir.resolve(thumbnail.getFileName());
                 if (Files.exists(screenshot)) {
                     ScreenshotMV mv = new ScreenshotMV();
-                    mv.setFull(outputDir.relativize(screenshot).toString());
-                    mv.setThumbnail(outputDir.relativize(thumbnail).toString());
+                    mv.setFull(localeOutputDir.relativize(screenshot).toString());
+                    mv.setThumbnail(localeOutputDir.relativize(thumbnail).toString());
                     screenshots.add(mv);
                 }
             }
@@ -221,12 +220,12 @@ public class GameSiteKitMain {
         }
     }
 
-    private List<DownloadsMV> createDownloadsMV() throws IOException {
+    private List<DownloadsMV> createDownloadsMV(Path localeOutputDir) throws IOException {
         List<DownloadsMV> downloads = new ArrayList<>();
         try (DirectoryStream<Path> stream = Files.newDirectoryStream(downloadsOutputDir)) {
             for (Path download : stream) {
                 DownloadsMV mv = new DownloadsMV();
-                mv.setUrl(downloadsOutputDir.relativize(download).toString());
+                mv.setUrl(localeOutputDir.relativize(download).toString());
                 mv.setFileName(download.getFileName().toString());
                 downloads.add(mv);
             }
@@ -253,8 +252,18 @@ public class GameSiteKitMain {
     private void copyStyle() throws IOException {
         FileUtils.copyDirectory(styleInputDir.toFile(), styleOutputDir.toFile());
     }
+
     private void copyScripts() throws IOException {
         FileUtils.copyDirectory(scriptsInputDir.toFile(), scriptsOutputDir.toFile());
+    }
+
+    private void cleanUp() throws IOException {
+        FileUtils.deleteDirectory(outputDir.toFile());
+        Files.createDirectories(outputDir);
+    }
+
+    private void copyPhp() throws IOException {
+        Files.copy(templateDir.resolve("lang_selector.php"), outputDir.resolve("index.php"));
     }
 
 }
