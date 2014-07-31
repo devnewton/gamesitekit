@@ -1,5 +1,6 @@
+<h2>Features</h2>
 <ul>
-    <li>Genre: ${manifest.game.genre}</li>
-    <li>License: ${manifest.game.license}</li>
-    <li>Platforms: ${manifest.game.platforms}</li>
+<#list manifest.game.feature as feature >
+    <li>${feature}</li>
+</#list>
 </ul>
