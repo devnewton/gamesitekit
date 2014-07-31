@@ -54,7 +54,8 @@
         $('#screenshot-thumbnails > a').colorbox({
             rel:'gal',
             maxWidth:"90%",
-            maxHeight:"90%"
+            maxHeight:"90%",
+            current: "{current} / {total}" 
         });
     });
     </script>
