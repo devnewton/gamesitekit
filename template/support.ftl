@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8"/> 
-    <title>${(manifest.game.name)!} - Support</title>
+    <title>${(manifest.name)!} - Support</title>
     <#include "css.ftl">
 </head>
 <body>

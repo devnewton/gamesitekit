@@ -117,11 +117,11 @@ aside section h2 {
     text-align: center;
 }
 
-#trailer {
+.trailer {
     text-align: center;
 }
 
-#cover {
+.cover {
     text-align: center;
     background: none;
     border: none;

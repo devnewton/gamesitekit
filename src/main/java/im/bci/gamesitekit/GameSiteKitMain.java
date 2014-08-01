@@ -75,8 +75,6 @@ public class GameSiteKitMain {
     private Path screenshotThumbnailsInputDir;
     private Path screenshotThumbnailsOutputDir;
     private Path screenshotsOutputDir;
-    private Path downloadsInputDir;
-    private Path downloadsOutputDir;
     private Path styleInputDir;
     private Path styleOutputDir;
     private Path scriptsInputDir;
@@ -101,8 +99,6 @@ public class GameSiteKitMain {
             if (null == outputDir) {
                 outputDir = FileSystems.getDefault().getPath("target/site");
             }
-            downloadsInputDir = inputDir.resolve("downloads");
-            downloadsOutputDir = outputDir.resolve("downloads");
             screenshotsOutputDir = outputDir.resolve("screenshots");
             screenshotThumbnailsOutputDir = screenshotsOutputDir.resolve("thumbnails");
             screenshotsInputDir = inputDir.resolve("screenshots");
@@ -149,7 +145,6 @@ public class GameSiteKitMain {
         copyStyle();
         copyScripts();
         copyScreenshots();
-        copyDownloads();
     }
 
     private void copyScreenshots() throws IOException {
@@ -171,25 +166,14 @@ public class GameSiteKitMain {
         Path localeOutputDir = outputDir.resolve(locale.getLanguage());
         Files.createDirectories(localeOutputDir);
         HashMap<String, Object> model = new HashMap<>();
-        model.put("manifest", freemarker.ext.dom.NodeModel.parse(resolveManifest(locale).toFile()));
         model.put("screenshots", createScreenshotsMV(localeOutputDir));
-        model.put("downloads", createDownloadsMV(localeOutputDir));
-        model.put("mods", createModsMV(localeOutputDir));
         freemakerConfiguration.setLocale(locale);
+        freemakerConfiguration.addAutoImport("manifest", "manifest.ftl");
         try (BufferedWriter w = Files.newBufferedWriter(localeOutputDir.resolve("index.html"), Charset.forName("UTF-8"))) {
             freemakerConfiguration.getTemplate("index.ftl").process(model, w);
         }
         try (BufferedWriter w = Files.newBufferedWriter(localeOutputDir.resolve("support.html"), Charset.forName("UTF-8"))) {
             freemakerConfiguration.getTemplate("support.ftl").process(model, w);
-        }
-    }
-
-    private Path resolveManifest(Locale locale) {
-        Path manifest = inputDir.resolve("manifest_" + locale.getLanguage() + ".xml");
-        if (Files.exists(manifest)) {
-            return manifest;
-        } else {
-            return inputDir.resolve("manifest.xml");
         }
     }
 
@@ -217,38 +201,6 @@ public class GameSiteKitMain {
         return screenshots;
     }
 
-    private void copyDownloads() throws IOException {
-        Files.createDirectories(downloadsOutputDir);
-        try (DirectoryStream<Path> stream = Files.newDirectoryStream(downloadsInputDir)) {
-            for (Path image : stream) {
-                Files.copy(image, downloadsOutputDir.resolve(downloadsInputDir.relativize(image)));
-            }
-        }
-    }
-
-    private List<DownloadsMV> createDownloadsMV(Path localeOutputDir) throws IOException {
-        List<DownloadsMV> downloads = new ArrayList<>();
-        try (DirectoryStream<Path> stream = Files.newDirectoryStream(downloadsOutputDir)) {
-            for (Path download : stream) {
-                DownloadsMV mv = new DownloadsMV();
-                mv.setUrl(localeOutputDir.relativize(download).toString());
-                mv.setFileName(download.getFileName().toString());
-                downloads.add(mv);
-            }
-        }
-        Collections.sort(downloads, new Comparator<DownloadsMV>() {
-
-            @Override
-            public int compare(DownloadsMV o1, DownloadsMV o2) {
-                String ext1 = o1.getFileName().substring(o1.getFileName().indexOf("."));
-                String ext2 = o2.getFileName().substring(o2.getFileName().indexOf("."));
-                return ext2.compareTo(ext1);
-            }
-
-        });
-        return downloads;
-    }
-
     private void copyMedias() throws IOException {
         Path mediaOutputDir = outputDir.resolve("media");
         FileUtils.copyDirectory(templateDir.resolve("media").toFile(), mediaOutputDir.toFile());
@@ -270,24 +222,5 @@ public class GameSiteKitMain {
 
     private void copyPhp() throws IOException {
         Files.copy(templateDir.resolve("lang_selector.php"), outputDir.resolve("index.php"));
-    }
-
-    private List<ModMV> createModsMV(Path localeOutputDir) throws IOException {
-        List<ModMV> mods = new ArrayList<>();
-        try (DirectoryStream<Path> stream = Files.newDirectoryStream(modsInputDir, new DirectoryStream.Filter<Path>() {
-
-            @Override
-            public boolean accept(Path entry) throws IOException {
-                String name = entry.toString();
-                return name.endsWith(".ftl") && !name.endsWith("_fr.ftl");
-            }
-        })) {
-            for (Path modPath : stream) {
-                ModMV mod = new ModMV();
-                mod.setTemplate(inputDir.relativize(modPath).toString());
-                mods.add(mod);
-            }
-        }
-        return mods;
     }
 }

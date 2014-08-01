@@ -1,5 +1,5 @@
 <ul>
-    <li>Genre: ${manifest.game.genre}</li>
-    <li>Licence: ${manifest.game.license}</li>
-    <li>Platformes: ${manifest.game.platforms}</li>
+    <li>Genre: ${manifest.genre}</li>
+    <li>Licence: ${manifest.license}</li>
+    <li>Platformes: ${manifest.platforms}</li>
 </ul>

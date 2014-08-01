@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8"/> 
-    <title>${(manifest.game.name)!}</title>
+    <title>${(manifest.name)!}</title>
     <#include "css.ftl">
 </head>
 <body>
@@ -11,7 +11,7 @@
 
 <div id="content">
     <main id="content-main">
-        <section id="trailer">
+        <section class="trailer">
             <#include "trailer.ftl" >
         </section>
         <section id="presentation">
@@ -27,7 +27,7 @@
         </article>
     </main>
     <aside id="content-aside">
-        <section id="cover">
+        <section class="cover">
             <img src="../media/cover.png">
         </section>
         <section id="factsheet">
