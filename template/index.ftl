@@ -22,9 +22,9 @@
         <section id="downloads">
             <#include "downloads.ftl" >
         </section>
-        <section id="links">
-            <#include "links.ftl" >
-        </section>
+        <article id="mods">
+            <#include "mods.ftl" >
+        </article>
     </main>
     <aside id="content-aside">
         <section id="cover">
@@ -38,6 +38,9 @@
         </section>
         <section id="features">
             <#include "features.ftl" >
+        </section>
+        <section id="links">
+            <#include "links.ftl" >
         </section>
     </aside>
 </div>

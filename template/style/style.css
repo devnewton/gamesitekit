@@ -44,6 +44,19 @@ aside {
     padding: 1%;
 }
 
+.purchase-form {
+    background-color: rgb(162, 0, 0); 
+    color:white; text-align: center; 
+    box-shadow: 0px 3px 6px rgb(0, 0, 0); 
+    text-shadow: 1px 1px rgb(0, 0, 0); 
+    border-radius: 0.2em 0.2em 0.2em 0.2em; 
+    margin-bottom: 1.5em;
+    margin-top: 1.5em;
+    padding-bottom: 1.5em;
+    padding-top: 1.5em;
+    width:100%;
+}
+
 #menu {
     display: flex;
 }

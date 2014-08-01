@@ -83,6 +83,7 @@ public class GameSiteKitMain {
     private Path scriptsOutputDir;
 
     public static final String IMAGE_GLOB = "*.{jpg,jpeg,png,JPEG,JPG,PNG}";
+    private Path modsInputDir;
 
     public GameSiteKitMain() {
     }
@@ -110,6 +111,7 @@ public class GameSiteKitMain {
             styleOutputDir = outputDir.resolve("style");
             scriptsInputDir = templateDir.resolve("scripts");
             scriptsOutputDir = outputDir.resolve("scripts");
+            modsInputDir = inputDir.resolve("mods");
         } catch (CmdLineException e) {
             System.err.println(e.getMessage());
             System.err.println("gamesitekit [options...] arguments...");
@@ -172,6 +174,7 @@ public class GameSiteKitMain {
         model.put("manifest", freemarker.ext.dom.NodeModel.parse(resolveManifest(locale).toFile()));
         model.put("screenshots", createScreenshotsMV(localeOutputDir));
         model.put("downloads", createDownloadsMV(localeOutputDir));
+        model.put("mods", createModsMV(localeOutputDir));
         freemakerConfiguration.setLocale(locale);
         try (BufferedWriter w = Files.newBufferedWriter(localeOutputDir.resolve("index.html"), Charset.forName("UTF-8"))) {
             freemakerConfiguration.getTemplate("index.ftl").process(model, w);
@@ -269,4 +272,22 @@ public class GameSiteKitMain {
         Files.copy(templateDir.resolve("lang_selector.php"), outputDir.resolve("index.php"));
     }
 
+    private List<ModMV> createModsMV(Path localeOutputDir) throws IOException {
+        List<ModMV> mods = new ArrayList<>();
+        try (DirectoryStream<Path> stream = Files.newDirectoryStream(modsInputDir, new DirectoryStream.Filter<Path>() {
+
+            @Override
+            public boolean accept(Path entry) throws IOException {
+                String name = entry.toString();
+                return name.endsWith(".ftl") && !name.endsWith("_fr.ftl");
+            }
+        })) {
+            for (Path modPath : stream) {
+                ModMV mod = new ModMV();
+                mod.setTemplate(inputDir.relativize(modPath).toString());
+                mods.add(mod);
+            }
+        }
+        return mods;
+    }
 }
