@@ -17,7 +17,7 @@
     </main>
     <aside id="content-aside">
         <section id="cover">
-            <img src="../media/cover.png">
+            <img alt="" src="../media/cover.png">
         </section>
         <section id="factsheet">
             <#include "factsheet.ftl" >

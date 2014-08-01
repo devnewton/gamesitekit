@@ -11,13 +11,11 @@
 
 <div id="content">
     <main id="content-main">
-        <section class="trailer">
+        <div class="trailer">
             <#include "trailer.ftl" >
-        </section>
+        </div>
         <section id="presentation">
             <#include "presentation.ftl" >
-        </section>
-        <section id="buy">
         </section>
         <section id="downloads">
             <#include "downloads.ftl" >
@@ -27,9 +25,9 @@
         </article>
     </main>
     <aside id="content-aside">
-        <section class="cover">
-            <img src="../media/cover.png">
-        </section>
+        <div class="cover">
+            <img alt="" src="../media/cover.png">
+        </div>
         <section id="factsheet">
             <#include "factsheet.ftl" >
         </section>

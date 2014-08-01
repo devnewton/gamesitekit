@@ -1,14 +1,14 @@
-<h2>Newton Adventure Mod Pack 1 </h2>
+<h3>Newton Adventure Mod Pack 1 </h3>
 
 <div class="purchase-form" >
-<h3>Buy Newton Adventure Mod Pack 1, <strong>pay what you want!</strong></h3>
+<h4>Buy Newton Adventure Mod Pack 1, <strong>pay what you want!</strong></h4>
 <form action="http://bci.im/store/newton-adventure/purchase/purchase.php" method="get">
     <label for="newton-adventure-mod-pack1-amount">Price:</label>
     <input id="newton-adventure-mod-pack1-amount" type="number" name="amount" min="2" value="2"> € <input type="submit" value="Buy">
 </form>
 </div>
 
-<h3>Deluxe</h3>
+<h4>Deluxe</h4>
 <div class="trailer">
     <video controls>
         <source src="http://dl.dropboxusercontent.com/s/tm4a9zzuq4tgi49/newton_adventure_deluxe_mod_trailer.webm" type="video/webm">
@@ -22,7 +22,7 @@ The Deluxe mod add 3 special quests with new gameplay element:
 	<li>Accelerators: when object pass through them, they add force to the current movement, making it easy to go fast into dangerous zones.</li>
 </ul>
 
-<h3>Retro</h3>
+<h4>Retro</h4>
 <div class="trailer">
     <video controls>
         <source src="http://dl.dropboxusercontent.com/s/6z2nwxgqua1wpgr/newton_adventure_retro_mod_trailer.webm" type="video/webm">

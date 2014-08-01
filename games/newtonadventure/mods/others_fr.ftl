@@ -1,27 +1,27 @@
-<h2>Autres mods</h2>
+<h3>Autres mods</h3>
 
-<h3 id="duchatelet">Du Châtelet Adventure</h3>
+<h4 id="duchatelet">Du Châtelet Adventure</h4>
 
-<img src="../media/duchatelet-cover.png"/>
+<img alt="" src="../media/duchatelet-cover.png"/>
 
 Ce mod permet de jouer une héroïne inspirée d'Emilie Du Châtelet.
 
 <table>
     <tr>
-        <td><img src="../media/logos/os/logo_linux.svg" width="32" height="32"></img> Linux <img src="../media/logos/os/logo_apple.svg" width="32" height="32"></img> MacosX and other OS</td>
+        <td><img alt="" src="../media/logos/os/logo_linux.svg" width="32" height="32"> Linux <img alt="" src="../media/logos/os/logo_apple.svg" width="32" height="32"> MacosX and other OS</td>
         <td><a href="//dl.bci.im/games/newton_adventure/mods/newton-adventure-mod-duchatelet-${manifest.version}-installer.jar">Télécharger l'installeur multiplateforme</a></td>
     </tr>
 </table>
 
-<h3 id="bald">Bald Adventure</h3>
+<h4 id="bald">Bald Adventure</h4>
 
-<img src="../media/bald-cover.png"/>
+<img alt="" src="../media/bald-cover.png"/>
 
 Ce mod permet de jouer un chauve.
 
 <table>
     <tr>
-        <td><img src="../media/logos/os/logo_linux.svg" width="32" height="32"></img> Linux <img src="../media/logos/os/logo_apple.svg" width="32" height="32"></img> MacosX and other OS</td>
+        <td><img alt="" src="../media/logos/os/logo_linux.svg" width="32" height="32"> Linux <img alt="" src="../media/logos/os/logo_apple.svg" width="32" height="32"> MacosX and other OS</td>
         <td><a href="//dl.bci.im/games/newton_adventure/mods/newton-adventure-mod-bald-${manifest.version}-installer.jar">Télécharger l'installeur multiplateforme</a></td>
     </tr>
 </table>
