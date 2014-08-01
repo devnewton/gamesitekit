@@ -6,6 +6,7 @@
     <catchphrase>2d rotating platformer for Windows, Mac &amp; Linux</catchphrase>
     <platforms>Android, Linux, MacosX, Windows</platforms>
     <blog>http://devnewton.bci.im</blog>
+    <webVersion>http://play.bci.im/newton_adventure/</webVersion>
     <feature>Nice 16 bits styled colorful graphism.</feature>
     <feature>Gamepad support.</feature>
     <feature>Level editor, full source code and data available under free license.</feature>

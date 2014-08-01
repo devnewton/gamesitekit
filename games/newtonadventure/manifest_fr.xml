@@ -6,6 +6,7 @@
     <catchphrase>Jeu de plateforme tournant pour Windows, Mac &amp; Linux</catchphrase>
     <platforms>Android, Linux, MacosX, Windows</platforms>
     <blog>http://devnewton.bci.im</blog>
+    <webVersion>http://play.bci.im/newton_adventure/</webVersion>
     <feature>Des graphismes colorés dans le style "16 bits".</feature>
     <feature>Gestion des manettes de jeu.</feature>
     <feature>Un éditeur de niveau, le code source complet ainsi que les données sont disponibles sous des licences libres.</feature>

@@ -24,4 +24,10 @@
     </#if>
     </tr>
 </#list>
+<#if manifest.game.webVersion?? >
+    <tr>
+        <td><img src="../media/logos/html5.svg" height="32" width="32"> HTML5 browser (Firefox, Chromium...)</td>
+        <td><a href="${manifest.game.webVersion}">Play online</a></td>
+    </tr>
+</#if>
 </table>
