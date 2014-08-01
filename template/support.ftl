@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8"/> 
-    <title>${(manifest.game.name)!}</title>
+    <title>${(manifest.game.name)!} - Support</title>
     <#include "css.ftl">
 </head>
 <body>
@@ -11,19 +11,8 @@
 
 <div id="content">
     <main id="content-main">
-        <section id="trailer">
-            <#include "trailer.ftl" >
-        </section>
-        <section id="presentation">
-            <#include "presentation.ftl" >
-        </section>
-        <section id="buy">
-        </section>
-        <section id="downloads">
-            <#include "downloads.ftl" >
-        </section>
-        <section id="links">
-            <#include "links.ftl" >
+        <section id="faq">
+            <#include "faq.ftl" >
         </section>
     </main>
     <aside id="content-aside">

@@ -5,6 +5,7 @@
     <name>Newton Adventure</name>
     <catchphrase>2d rotating platformer for Windows, Mac &amp; Linux</catchphrase>
     <platforms>Android, Linux, MacosX, Windows</platforms>
+    <blog>http://devnewton.bci.im</blog>
     <feature>Nice 16 bits styled colorful graphism.</feature>
     <feature>Gamepad support.</feature>
     <feature>Level editor, full source code and data available under free license.</feature>

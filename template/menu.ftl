@@ -1,2 +1,4 @@
-<a href="../fr/index.html">Français</a>
-<a href="http://devnewton.bci.im">Blog</a>
+<a href="index.html">Home</a>
+<a href="${manifest.game.blog}">Blog</a>
+<a href="support.html">Support</a>
+<a id="lang" href="../fr/index.html"><img src="../media/flags/fr.png"/>&nbsp;Français</a>
