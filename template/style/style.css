@@ -76,6 +76,15 @@ aside {
     margin: 0px 0px 20px;
 }
 
+footer {
+    border-top: 2px solid #574B33;
+    padding: 20px 0px 0px;
+    margin: 20px 0px 0px;
+    display: flex;
+    justify-content: space-between;
+    font-size: small;
+}
+
 #content {
     display: flex;
     flex-flow: row;

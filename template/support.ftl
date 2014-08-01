@@ -16,9 +16,9 @@
         </section>
     </main>
     <aside id="content-aside">
-        <section id="cover">
+        <div class="cover">
             <img alt="" src="../media/cover.png">
-        </section>
+        </div>
         <section id="factsheet">
             <#include "factsheet.ftl" >
         </section>
@@ -31,5 +31,6 @@
     </aside>
 </div>
 <#include "scripts.ftl">
+<#include "footer.ftl">
 </body>
 </html> 
