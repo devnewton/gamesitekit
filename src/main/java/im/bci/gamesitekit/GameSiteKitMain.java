@@ -42,6 +42,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
@@ -81,7 +82,6 @@ public class GameSiteKitMain {
     private Path scriptsOutputDir;
 
     public static final String IMAGE_GLOB = "*.{jpg,jpeg,png,JPEG,JPG,PNG}";
-    private Path modsInputDir;
 
     public GameSiteKitMain() {
     }
@@ -107,7 +107,6 @@ public class GameSiteKitMain {
             styleOutputDir = outputDir.resolve("style");
             scriptsInputDir = templateDir.resolve("scripts");
             scriptsOutputDir = outputDir.resolve("scripts");
-            modsInputDir = inputDir.resolve("mods");
         } catch (CmdLineException e) {
             System.err.println(e.getMessage());
             System.err.println("gamesitekit [options...] arguments...");
@@ -167,6 +166,7 @@ public class GameSiteKitMain {
         Files.createDirectories(localeOutputDir);
         HashMap<String, Object> model = new HashMap<>();
         model.put("screenshots", createScreenshotsMV(localeOutputDir));
+        model.put("lastUpdate", new Date());
         freemakerConfiguration.setLocale(locale);
         freemakerConfiguration.addAutoImport("manifest", "manifest.ftl");
         try (BufferedWriter w = Files.newBufferedWriter(localeOutputDir.resolve("index.html"), Charset.forName("UTF-8"))) {

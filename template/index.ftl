@@ -6,9 +6,7 @@
     <#include "css.ftl">
 </head>
 <body>
-
 <#include "header.ftl">
-
 <div id="content">
     <main id="content-main">
         <div class="trailer">
@@ -43,5 +41,6 @@
     </aside>
 </div>
 <#include "scripts.ftl">
+<#include "footer.ftl">
 </body>
 </html> 
