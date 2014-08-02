@@ -4,7 +4,8 @@
 <h4>Acheter Newton Adventure Mod Pack 1 à <strong>prix libre!</strong></h4>
 <form action="http://bci.im/store/newton-adventure/purchase/purchase.php" method="get">
     <label for="newton-adventure-mod-pack1-amount">Prix:</label>
-    <input id="newton-adventure-mod-pack1-amount" type="number" name="amount" min="2" value="2"> € <input type="submit" value="Acheter">
+    <input disabled id="newton-adventure-mod-pack1-amount" type="number" name="amount" min="2" value="2"> € <input disabled type="submit" value="Acheter">
+    <p><strong>En raison de paiements non reçus de la part de la société Paypal, l'achat de ce mod n'est plus disponible via le web. Veuillez me contacter par mail à l'adresse <i>devnewton arobase bci.im</i>.</strong></p>
 </form>
 </div>
 
