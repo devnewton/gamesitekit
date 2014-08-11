@@ -1,5 +1,6 @@
 html {
     background-color: #FAFAFA;
+    background-image: url('../media/background.png');
     color: #292929;
     font-family: Fengardo,sans-serif;
 }
@@ -8,6 +9,10 @@ body {
     max-width: 1024px;
     margin-left: auto;
     margin-right: auto;
+    background-color: #FAFAFA;
+    border: 20px solid rgba(250, 250, 250, 0.4);
+    background-clip: content-box;
+    border-radius: 16px;
 }
 
 img {
