@@ -4,7 +4,7 @@
 This mod allow to play a new character inspired by Emilie Du Châtelet.
 
 <div class="cover">
-    <img alt="" src="../media/duchatelet-cover.png"/>
+    <img alt="" src="../media/duchatelet-cover.jpg"/>
 </div>
 
 <table>
@@ -17,7 +17,7 @@ This mod allow to play a new character inspired by Emilie Du Châtelet.
 <h4 id="bald">Bald Adventure</h4>
 
 <div class="cover">
-    <img alt="" src="../media/bald-cover.png"/>
+    <img alt="" src="../media/bald-cover.jpg"/>
 </div>
 
 This mod allow to play with a bald character.

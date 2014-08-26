@@ -169,14 +169,10 @@ public class GameSiteKitMain {
         model.put("lastUpdate", new Date());
         freemakerConfiguration.setLocale(locale);
         freemakerConfiguration.addAutoImport("manifest", "manifest.ftl");
-        try (BufferedWriter w = Files.newBufferedWriter(localeOutputDir.resolve("index.html"), Charset.forName("UTF-8"))) {
-            freemakerConfiguration.getTemplate("index.ftl").process(model, w);
-        }
-        try (BufferedWriter w = Files.newBufferedWriter(localeOutputDir.resolve("support.html"), Charset.forName("UTF-8"))) {
-            freemakerConfiguration.getTemplate("support.ftl").process(model, w);
-        }
-        try (BufferedWriter w = Files.newBufferedWriter(localeOutputDir.resolve("wishlist.html"), Charset.forName("UTF-8"))) {
-            freemakerConfiguration.getTemplate("wishlist.ftl").process(model, w);
+        for(String file : Arrays.asList("index", "support", "giftware")) {
+            try (BufferedWriter w = Files.newBufferedWriter(localeOutputDir.resolve(file + ".html"), Charset.forName("UTF-8"))) {
+                freemakerConfiguration.getTemplate(file + ".ftl").process(model, w);
+            }
         }
     }
 

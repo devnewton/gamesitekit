@@ -2,7 +2,7 @@
 
 <h4 id="duchatelet">Du Châtelet Adventure</h4>
 
-<img alt="" src="../media/duchatelet-cover.png"/>
+<img alt="" src="../media/duchatelet-cover.jpg"/>
 
 Ce mod permet de jouer une héroïne inspirée d'Emilie Du Châtelet.
 
@@ -15,7 +15,7 @@ Ce mod permet de jouer une héroïne inspirée d'Emilie Du Châtelet.
 
 <h4 id="bald">Bald Adventure</h4>
 
-<img alt="" src="../media/bald-cover.png"/>
+<img alt="" src="../media/bald-cover.jpg"/>
 
 Ce mod permet de jouer un chauve.
 

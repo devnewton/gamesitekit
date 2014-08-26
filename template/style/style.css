@@ -1,6 +1,6 @@
 html {
     background-color: #FAFAFA;
-    background-image: url('../media/background.png');
+    background-image: url('../media/background.jpg');
     color: #292929;
     font-family: Fengardo,sans-serif;
 }
@@ -62,6 +62,14 @@ aside {
     width:100%;
 }
 
+.purchase-form a {
+    color: yellow;
+}
+
+.purchase-form a:hover, a:focus {
+    color: lightyellow;
+}
+
 #menu {
     display: flex;
 }
@@ -105,9 +113,11 @@ a:hover, a:focus {
 a:hover, a:active, a:focus {
     text-decoration: underline;
 }
-a:link, a:visited {
+
+a:visited {
     text-decoration: none;
 }
+
 a {
     color: #D61111;
 }
