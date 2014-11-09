@@ -5,7 +5,7 @@
         <td><a href="http://dl.bci.im/games/newton_adventure/newton-adventure-installer-${manifest.version}.exe">Download Windows installer</a></td>
     </tr>
     <tr>
-        <td><img alt="" src="../media/logos/os/logo_debian.svg" height="32" width="32">Debian <strong>stable</strong><img alt="" src="../media/logos/os/logo_ubuntu.svg" height="32" width="32"> Ubuntu <strong>12.04 LTS</strong></td>
+        <td><img alt="" src="../media/logos/os/logo_debian.svg" height="32" width="32">Debian <strong>stable</strong><img alt="" src="../media/logos/os/logo_ubuntu.svg" height="32" width="32"> Ubuntu <strong>14.04 LTS</strong></td>
         <td><a href="http://dl.bci.im/games/newton_adventure/newton-adventure_${manifest.version}.deb">Download deb package</a></td>
     </tr>
     <tr>
