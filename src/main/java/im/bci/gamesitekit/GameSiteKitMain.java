@@ -169,7 +169,7 @@ public class GameSiteKitMain {
         model.put("lastUpdate", new Date());
         freemakerConfiguration.setLocale(locale);
         freemakerConfiguration.addAutoImport("manifest", "manifest.ftl");
-        for(String file : Arrays.asList("index", "support", "giftware")) {
+        for(String file : Arrays.asList("index", "support")) {
             try (BufferedWriter w = Files.newBufferedWriter(localeOutputDir.resolve(file + ".html"), Charset.forName("UTF-8"))) {
                 freemakerConfiguration.getTemplate(file + ".ftl").process(model, w);
             }

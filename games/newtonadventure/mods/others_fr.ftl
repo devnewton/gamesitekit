@@ -1,6 +1,4 @@
-<h3>Autres mods</h3>
-
-<h4 id="duchatelet">Du Châtelet Adventure</h4>
+<h3 id="duchatelet">Du Châtelet Adventure</h3>
 
 <img alt="" src="../media/duchatelet-cover.jpg"/>
 
@@ -13,7 +11,7 @@ Ce mod permet de jouer une héroïne inspirée d'Emilie Du Châtelet.
     </tr>
 </table>
 
-<h4 id="bald">Bald Adventure</h4>
+<h3 id="bald">Bald Adventure</h3>
 
 <img alt="" src="../media/bald-cover.jpg"/>
 
