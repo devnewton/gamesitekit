@@ -11,8 +11,7 @@
     <tr>
         <td><img alt="" src="../media/logos/os/logo_redhat.svg" height="32" width="32">Red Hat <img alt="" src="../media/logos/os/logo_fedora.svg" height="32" width="32">Fedora <img alt="" src="../media/logos/os/logo_opensuse.svg" height="32" width="32">Suse </td>
         <td>
-            <a href="http://dl.bci.im/games/newton_adventure/newton-adventure-${manifest.version}-1.i686.rpm">Download 32 bits rpm package</a><br/>
-            <a href="http://dl.bci.im/games/newton_adventure/newton-adventure-${manifest.version}-1.x86_64.rpm">Download 64 bits rpm package</a>
+            <a href="http://dl.bci.im/games/newton_adventure/newton-adventure-${manifest.version}-1.noarch.rpm">Download rpm package</a>
         </td>
     </tr>
     <tr>
@@ -22,7 +21,7 @@
     <tr>
         <td><img alt="" src="../media/logos/os/logo_linux.svg" height="32" width="32"> Linux <img alt="" src="../media/logos/os/logo_apple.svg" height="32" width="32"> MacosX and other OS</td>
         <td>
-            <a href="http://dl.bci.im/games/newton_adventure/newton-adventure-installer-${manifest.version}.jar">Download cross platform package</a>
+            <a href="http://dl.bci.im/games/newton_adventure/newton-adventure-installer-${manifest.version}.jar">Download cross platform package</a><br/>
             <a href="http://dl.bci.im/games/newton_adventure/newton_adventure_editor-1.0.jar">Download level editor</a>
         </td>
     </tr>

@@ -11,8 +11,7 @@
     <tr>
         <td><img alt="" src="../media/logos/os/logo_redhat.svg" height="32" width="32">Red Hat <img alt="" src="../media/logos/os/logo_fedora.svg" height="32" width="32">Fedora <img alt="" src="../media/logos/os/logo_opensuse.svg" height="32" width="32">Suse </td>
         <td>
-            <a href="http://dl.bci.im/games/newton_adventure/newton-adventure-${manifest.version}-1.i686.rpm">T&eacute;l&eacute;charger le paquet rpm 32 bits</a><br/>
-            <a href="http://dl.bci.im/games/newton_adventure/newton-adventure-${manifest.version}-1.x86_64.rpm">T&eacute;l&eacute;charger le paquet rpm 64 bits</a>
+            <a href="http://dl.bci.im/games/newton_adventure/newton-adventure-${manifest.version}-1.noarch.rpm">T&eacute;l&eacute;charger le paquet rpm</a>
         </td>
     </tr>
     <tr>
@@ -22,7 +21,7 @@
     <tr>
         <td><img alt="" src="../media/logos/os/logo_linux.svg" height="32" width="32"> Linux <img alt="" src="../media/logos/os/logo_apple.svg" height="32" width="32"> MacosX and other OS</td>
         <td>
-            <a href="http://dl.bci.im/games/newton_adventure/newton-adventure-installer-${manifest.version}.jar">T&eacute;l&eacute;charger l'installeur multiplateforme</a>
+            <a href="http://dl.bci.im/games/newton_adventure/newton-adventure-installer-${manifest.version}.jar">T&eacute;l&eacute;charger l'installeur multiplateforme</a><br/>
             <a href="http://dl.bci.im/games/newton_adventure/newton_adventure_editor-1.0.jar">T&eacute;l&eacute;charger l'&eacute;diteur de niveaux</a>
         </td>
     </tr>

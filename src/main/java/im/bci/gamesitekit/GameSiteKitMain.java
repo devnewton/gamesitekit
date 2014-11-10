@@ -183,8 +183,8 @@ public class GameSiteKitMain {
                 Path screenshot = screenshotsOutputDir.resolve(thumbnail.getFileName());
                 if (Files.exists(screenshot)) {
                     ScreenshotMV mv = new ScreenshotMV();
-                    mv.setFull(localeOutputDir.relativize(screenshot).toString());
-                    mv.setThumbnail(localeOutputDir.relativize(thumbnail).toString());
+                    mv.setFull(localeOutputDir.relativize(screenshot).toString().replace('\\', '/'));
+                    mv.setThumbnail(localeOutputDir.relativize(thumbnail).toString().replace('\\', '/'));
                     screenshots.add(mv);
                 }
             }

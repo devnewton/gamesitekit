@@ -11,6 +11,6 @@ With a neon graphic style, the Retro mod change gameplay: the goal is know to co
 <table>
     <tr>
         <td><img alt="" src="../media/logos/os/logo_linux.svg" width="32" height="32"> Linux <img alt="" src="../media/logos/os/logo_apple.svg" width="32" height="32"> MacosX and other OS</td>
-        <td><a href="//dl.bci.im/games/newton_adventure/mods/newton-adventure-mod-retro-${manifest.version}-installer.jar">Download cross platform package</a></td>
+        <td><a href="//dl.bci.im/games/newton_adventure/newton-adventure-mod-retro-${manifest.version}-installer.jar">Download cross platform package</a></td>
     </tr>
 </table>
