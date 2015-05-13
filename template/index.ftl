@@ -23,9 +23,6 @@
         </article>
     </main>
     <aside id="content-aside">
-        <div class="cover">
-            <img alt="" src="../media/cover.jpg">
-        </div>
         <section id="factsheet">
             <#include "factsheet.ftl" >
         </section>
