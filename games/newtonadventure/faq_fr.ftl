@@ -43,4 +43,4 @@ Il est possible de désactiver la rotation de la caméra dans le menu "options".
 
 <h4>J'ai une question et la réponse n'est pas dans la FAQ</h4>
 
-<a href="http://devnewton.bci.im/contact">Contactez moi!</a>
+<a href="http://devnewton.bci.im/fr/contact/">Contactez moi!</a>
