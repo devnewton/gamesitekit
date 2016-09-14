@@ -2,8 +2,7 @@
 
 <div class="trailer">
     <video controls>
-        <source src="http://dl.dropboxusercontent.com/s/6z2nwxgqua1wpgr/newton_adventure_retro_mod_trailer.webm" type="video/webm">
-        <source src="http://cdn.gameura.com/cache/videos/games/1/17/16482/encode_mp4/trailer_retro.mp4" type="video/mp4">
+    	<source src="../media/newton_adventure_retro_mod_trailer.webm" type="video/webm">
     </video>
 </div>
 With a neon graphic style, the Retro mod change gameplay: the goal is know to collect euro coins within very limited time in 18 new challenging levels.

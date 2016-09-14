@@ -2,8 +2,7 @@
 
 <div class="trailer">
     <video controls>
-        <source src="http://dl.dropboxusercontent.com/s/6z2nwxgqua1wpgr/newton_adventure_retro_mod_trailer.webm" type="video/webm">
-        <source src="http://cdn.gameura.com/cache/videos/games/1/17/16482/encode_mp4/trailer_retro.mp4" type="video/mp4">
+        <source src="../media/newton_adventure_retro_mod_trailer.webm" type="video/webm">
     </video>
 </div>
 Avec un style graphique néon, le mod Retro change l'objectif du jeu: le but est de récolter toutes les pièces dans un temps très limité au travers de 18 nouveaux niveaux qui représentent chacun un défi.
