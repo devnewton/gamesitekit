@@ -1,6 +1,10 @@
 <h2>Downloads</h2>
 <table>
     <tr>
+        <td><img alt="" src="../media/logos/html5.svg" height="32" width="32"> HTML5 browser(Firefox, Chromium...)</td>
+        <td><a href="http://play.bci.im/newton_adventure">Play online</a></td>
+    </tr>
+    <tr>
         <td><img alt="" src="../media/logos/os/logo_microsoft.svg" height="32" width="32">Windows XP / Vista / 7</td>
         <td><a href="http://dl.bci.im/games/newton_adventure/newton-adventure-installer-${manifest.version}.exe">Download Windows installer</a></td>
     </tr>
@@ -24,9 +28,5 @@
             <a href="http://dl.bci.im/games/newton_adventure/newton-adventure-installer-${manifest.version}.jar">Download cross platform package</a><br/>
             <a href="http://dl.bci.im/games/newton_adventure/newton_adventure_editor-1.0.jar">Download level editor</a>
         </td>
-    </tr>
-    <tr>
-        <td><img alt="" src="../media/logos/html5.svg" height="32" width="32"> HTML5 browser(Firefox, Chromium...)</td>
-        <td><a href="http://play.bci.im/newton_adventure">Play online</a></td>
     </tr>
 </table>
